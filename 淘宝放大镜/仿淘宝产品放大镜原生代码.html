@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			ul li{
+				list-style: none;
+			}
+			#box{
+				width: 400px;
+				height: 500px;
+				border: solid 1px red;
+				margin: 30px auto;
+				position: relative;
+			}
+			#box .pic{
+				width: 400px;
+				height: 400px;
+				position: relative;
+			}
+			#box .pic .cover{
+				width: 400px;
+				height: 400px;
+				background-color: red;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				opacity: 0;
+				filter: alpha(opacity=0);
+				z-index: 20;
+			}
+			#box .pic img{
+				width: 400px;
+				height: 400px;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				z-index: 0;
+			}
+			#box .pic .sekuai{
+				display: block;
+				width: 200px;
+				height: 200px;
+				position: absolute;
+				z-index: 2;
+				background: url(img/1.png);
+				opacity: 0.7;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				display: none;
+			}
+			#box .min_pic{
+				width: 380px;
+				height: 63px;
+				margin-left: 20px;
+				margin-top: 25px;
+			}
+			#box .min_pic img{
+				width: 60px;
+				height: 60px;
+				float: left;
+				margin-right: 20px;
+				cursor: pointer;
+			}
+			#box .large{
+				width: 400px;
+				height: 400px;
+				position: absolute;
+				left: 420px;
+				top: 0px;
+				overflow: hidden;
+				display: none;
+			}
+			#box .large img{
+				width: 800px;
+				height: 800px;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+			}
+		</style>
+<script type="text/javascript">
+	window.onload=function(){
+//		获取元素
+		var Box = document.getElementById('box');
+//		移入框内图片
+		var min_img = getClass('pic');
+		var img = getClass('min');
+//		获取遮罩
+		var mask = getClass('cover');
+//		获得色块
+		var lump = getClass('sekuai');
+//		下面的小图片
+		var sle_img = getClass('min_pic');
+//		右边放大的图片，和获取大图内图片
+		var max_img = getClass('large');
+		var max = getClass('max');
+//		获取到小图片的元素
+		var xiaotu = sle_img[0].children;
+//		进行for循环改变上面框内的图片和放大镜框内图片
+		for (i=0;i<xiaotu.length;i++) {
+			xiaotu[i].onmouseover=function(){
+//				获取到小图和大图的路径      getAttribute可以获取属性
+				var xt =this.getAttribute('src');
+				var dt = this.getAttribute('_bigsrc');
+//				然后把小图大图的路径赋值给移入地小框和放大的框
+				img[0].setAttribute('src',xt);
+				max[0].setAttribute('src',dt);
+			}
+		}
+//		移入小图宽实现放大
+		mask[0].onmousemove=function(e){
+//			获得兼容对象
+			var ev = window.event || e;
+//			计算鼠标和事件源的距离
+			var mouse_left = ev.layerX || ev.offsetX;
+			var mouse_top = ev.layerY || ev.offsetY;
+//			document.title = mouse_left+'|'+mouse_top;
+//			计算色块位置
+			var b_left = mouse_left - 100;
+			var b_top =mouse_top - 100;
+			b_left = (b_left<0)?0:b_left;
+			b_top = (b_top<0)?0:b_top;
+			b_left = (b_left>200)?200:b_left;
+			b_top = (b_top>200)?200:b_top;
+//			然后把新值赋值给色块
+			lump[0].style.left = b_left + 'px';
+			lump[0].style.top = b_top + 'px';
+//			放大图片改变位置
+			var r_left = b_left*-2;
+			var r_top = b_top*-2;
+//			右边放大把新值赋值过来
+			max[0].style.left = r_left + 'px';
+			max[0].style.top = r_top + 'px';
+		}
+		
+//		鼠标移入显示色块和放大内容
+		min_img[0].onmouseover=function(){
+			lump[0].style.display = 'block';
+			max_img[0].style.display = 'block';
+		}
+//		移除隐藏
+		min_img[0].onmouseout=function(){
+			lump[0].style.display = 'none';
+			max_img[0].style.display = 'none';
+		}
+//		兼容ClassName
+		function getClass(classname){
+            if (document.getElementByClassName) {
+                return document.getElementByClassName(classname);
+            } else{
+                var arr=[];
+                var tags=document.getElementsByTagName('*');
+                for (var i = 0; i < tags.length; i++) {
+                    if (tags[i].className==classname) {
+                        arr.push(tags[i]);                      
+                    } 
+                }
+                return arr;
+            }
+        }   
+	}
+</script>
+	</head>
+	<body>
+		<div id="box">
+			<div class="pic">
+				<img src="img/1.jpg" id="min" class="min" />
+				<b class="sekuai" id="sk"></b>
+				<div class="cover"></div>
+			</div>
+			<div class="min_pic">
+				<img _bigsrc="img/2.jpg" src="img/1.jpg"/>
+				<img _bigsrc="img/4.jpg" src="img/3.jpg"/>
+				<img _bigsrc="img/6.jpg" src="img/5.jpg"/>
+			</div>
+			<div class="large">
+				<img src="img/2.jpg" class="max" />
+			</div>
+		</div>
+	</body>
+</html>
