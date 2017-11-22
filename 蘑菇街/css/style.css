@@ -1,0 +1,68 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+img {
+  border: none;
+}
+#box {
+  width: 1174px;
+  height: auto;
+  overflow: hidden;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+#box .item {
+  float: left;
+  margin-right: 20px;
+}
+#box .item .top {
+  overflow: hidden;
+}
+#box .item .top .right {
+  display: none;
+}
+#box .item .top .left {
+  width: 215px;
+  margin-left: -35px;
+  overflow: hidden;
+  display: block;
+}
+#box .itemLast {
+  margin-right: 0px;
+}
+#box .itemActive{
+  float: left;
+  width: 374px;
+}
+#box .itemActive .top .left {
+  width: 250px;
+  margin-left: 0px;
+  display: block;
+  float: left;
+}
+#box .itemActive .top .right {
+  display: block;
+  float: right;
+  width: 102px;
+  padding-top: 15px;
+}
+#box .itemActive .top .right .topIcon {
+  display: block;
+  float: left;
+  height: 19px;
+  width: 100%;
+  background: url(../imgs/icon.png) no-repeat -40px 0px;
+}
+#box .itemActive .top .right ul {
+  float: left;
+}
+#box .itemActive .top .right ul li {
+  padding-top: 12px;
+  float: left;
+  list-style: none;
+}
+#box .itemActive .top .right ul li a {
+  float: left;
+}
+/*# sourceMappingURL=style.css.map */

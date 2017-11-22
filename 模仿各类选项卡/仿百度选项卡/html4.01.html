@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+			<script type="text/javascript">
+				$(function(){
+					$('.left li').click(function(){
+						$(this).addClass('active')
+								.siblings().removeClass('active');
+						var sum = $(this).index();
+						var top = sum*250;
+						$('.man').animate({
+							top:-top+'px'
+						},500)
+					})
+				})
+			</script>
+	</head>
+	<body>
+		<div class="box">
+			<ul class="left">
+				<li class="active">新闻</li>
+				<li>娱乐</li>
+				<li>彩票</li>
+			</ul>
+			<div class="right">
+				<ul class="man">
+					<li>内容1</li>
+					<li>内容2</li>
+					<li>内容3</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,10 @@
+body{margin:0px;padding:0px;font-size:14px;}
+div{margin:0 auto;}
+
+.fh{width:60px;height:50px;position:absolute;cursor:pointer;right:0px;top:300px;display:none;}
+.dle{width:1200px;height:1000px;background-color:red;}
+.zd{width:1200px;height:50px;background-color:yellow;line-height:50px;}
+
+
+
+

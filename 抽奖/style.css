@@ -1,0 +1,54 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+img{
+	border: none;
+}
+body{
+	background-color: #FFD3D4;
+}
+.box{
+	width: 568px;
+	height: 568px;
+	margin: 0 auto;
+}
+.box tr td{
+	width: 142px;
+	height: 142px;
+	overflow: hidden;
+	position: relative;
+}
+.box tr td img{
+	width: 142px;
+	height: 142px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: 1;
+}
+.box tr .ble{
+	width: 284px;
+	height: 284px;
+}
+.box tr .ble img{
+	width: 284px;
+	height: 284px;
+}
+.bg{
+	width: 142px;
+	height: 142px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	background-color: red;
+	z-index: 2;
+	opacity: 0.7;
+}
+
+
+
+
+
+
+

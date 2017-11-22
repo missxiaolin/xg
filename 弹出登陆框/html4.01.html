@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+		<script type="text/javascript" src="js/jquery.easydrag.handler.beta2.js"></script>
+		<script type="text/javascript">
+		
+		$(document).ready(function(){
+		
+			$('.one').click(function(){
+				
+				$('.box').show();
+				
+				
+				});
+				
+				
+			$('span').click(function(){
+				
+				
+				$('.box').hide();
+				
+				
+				});
+		
+		
+		
+		
+		
+			$('.box_all').easydrag();
+				
+			
+			});
+		
+		
+		
+		
+		
+		</script>
+		<style type="text/css">
+		* { padding:0; margin:0; }
+		
+		body { font-size:12px; padding:100px; }
+		
+		
+		.box_all { float:left; padding:5px; background:#eee; position:absolute; top:30%; left:30%;}
+		
+		.box { width:500px; border:1px solid #4c7ebd; display:none; }
+		
+		.box h1 { height:30px; line-height:30px; color:#fff; font-size:14px; background:#87b0e1; padding-left:10px; }
+		
+		.box span { float:right; padding-right:10px; cursor:pointer;}
+		
+		.box span a { display:block; height:30px; width:30px; background:url(img/close.jpg) no-repeat; text-indent:-9999px;}
+		
+		.box span a:hover { background:url(img/close_hover.jpg) no-repeat;}
+		
+		.box p { padding:10px; height:400px; background:#fff; border:3px solid #eee; }
+		
+		.one { display:block;}
+		
+		
+		</style>
+	</head>
+	<body>
+		<a href="#" class="one">登陆</a><br />
+		<div class="box_all">
+		  <div class="box">
+		    <h1><span><a href="#">关闭</a></span>这是标题</h1>
+		    <p>这是内容</p>
+		  </div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#lb{
+				width: 710px;
+				height: 475px;
+				position: relative;
+				overflow: hidden;
+				margin: 0 auto;
+				margin-top: 20px;
+			}
+			#lb .img{
+				width: 710px;
+				height: 475px;
+				z-index: 1;
+			}
+			#lb img{
+				width: 710px;
+				height: 475px;
+				display: block;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				opacity: 0;
+			}
+			#lb .yuandian{
+				height: 10px;
+				position: absolute;
+				z-index: 10;
+				right: 300px;
+				top: 430px;
+			}
+			#lb .yuandian li{
+				width: 10px;
+				height: 10px;
+				overflow: hidden;
+				float: left;
+				display: block;
+				margin-right: 8px;
+				cursor: pointer;
+				background-color: #1e1e1e;
+				border-radius: 10px;
+			}
+			#lb .yuandian .active{
+				background-color: yellow;
+			}
+		</style>
+<script type="text/javascript">
+	window.onload=function(){
+//		获取框div
+		var oDiv = document.getElementById('lb');
+//		获取ID下的存储图片的div
+		var idle = oDiv.getElementsByClassName('img');
+//		获取UL里面的小圆点
+		var yuandian = oDiv.getElementsByClassName('yuandian');
+//		获取框内的子元素
+		var img = idle[0].children;
+//		创建一个变量
+		var tj = 0;
+//		获取小圆点
+		var yd = yuandian[0].children;
+//		移入小圆点执行的代码
+		for(i=0;i<yd.length;i++){
+//			先把i先存如index
+			yd[i].index = i;
+//			移到圆点上执行代码以下
+			yd[i].onmouseover=function(){
+//				移入执行一个for循环先把所有的圆点上的class清除,图片所有隐藏
+				for (n=0;n<yd.length;n++) {
+					img[n].style.opacity = 0;
+					yd[n].className='';
+				}
+//				所有圆点上的样式清除图片隐藏之后给现在移入地那个圆点添加一个class,和图片的显示
+				img[this.index].style.opacity = 1;
+				this.className = 'active';
+//				移入地点的位置赋值给tj
+				tj = this.index;
+			}
+		}
+//		创建一个函数
+		function yr(){
+//			创建一个定时器
+			t = setInterval(function(){
+				tj++;
+				if(tj>5){
+					tj=0;
+				}
+				for(i=0;i<img.length;i++){
+					img[i].style.opacity = 0;
+					yd[i].className = '';
+				}
+				img[tj].style.opacity = 1;
+				yd[tj].className = 'active';
+			},1000)
+		}
+//		运行轮播图
+		yr();
+//		移入清除定时器
+		oDiv.onmouseover=function(){
+			clearInterval(t);
+		}
+//		移除实现定时器
+		oDiv.onmouseout=function(){
+			yr();
+		}
+		
+	}
+</script>
+	</head>
+	<body>
+		<div id="lb">
+			<div class="img">
+				<img src="images/lb1.jpg" style="opacity: 1;"/>
+				<img src="images/lb2.jpg"/>
+				<img src="images/lb3.jpg"/>
+				<img src="images/lb4.jpg"/>
+				<img src="images/lb5.jpg"/>
+				<img src="images/lb6.jpg"/>
+			</div>
+			
+			<ul class="yuandian">
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</body>
+</html>

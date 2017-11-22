@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#flash{
+			width: 480px;
+			height: 200px;
+			border: 3px solid orange;
+			margin: 30px auto;
+			position: relative;
+			/*景深*/
+			perspective: 1000px;
+		}
+		#flash .in{
+			/*设置3d环境*/
+			transform-style: preserve-3d;
+			width: 480px;
+			height: 200px;
+			transform: rotateY(0deg);
+			transform-origin: 240px 50px -240px;
+			transition: all 1s;
+		}
+		
+		#flash .in img{
+			position: absolute;
+			/*如果图片不正对屏幕,就隐藏*/
+			backface-visibility: hidden;
+		}
+		#flash .in img:nth-child(2){
+			left: -480px;
+			top: 0;
+			transform: rotateY(-90deg);
+			transform-origin: right;
+		}
+		#flash .in img:nth-child(3){
+			left: 480px;
+			top: 0;
+			transform: rotateY(90deg);
+			transform-origin: left;
+		}
+		#flash .in img:nth-child(1){
+			transform: rotateY(180deg) translateZ(480px);
+		}
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+				var tu = document.getElementById("flash").getElementsByClassName('in')[0];
+				var c = 0;
+				setInterval(function(){
+						c++;
+			//			计算角度
+						var d = c*90;
+			//			让div旋转
+						tu.style.transform = 'rotateY('+d+'deg)';
+				},3000)
+			}
+		</script>
+	</head>
+	<body>
+		<div id="flash">
+			<div class="in">
+				<img src="images/1.jpg"/>
+				<img src="images/2.jpg"/>
+				<img src="images/3.jpg"/>
+				<img src="images/4.jpg"/>
+			</div>
+		</div>
+	</body>
+</html>

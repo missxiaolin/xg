@@ -1,0 +1,260 @@
+ <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+				
+			}
+			#todays{
+				position: relative;
+			}
+			/*品牌盛典*/
+			#todays #mt{
+				position: absolute;
+				left: 244px;
+				top: 0;
+				z-index: 3;
+			}
+			#todays #mt img{
+				height: 153px;
+			}
+			/*按钮*/
+			.anniu{
+				display: none;
+			}
+			.box .abiaoqianL{
+				position: absolute;
+				left: 0;
+				top: 50px;
+				width: 28px;
+				height: 62px;
+				background: gray;
+				z-index: 3;
+				font-size: 25px;
+				line-height:62px ;
+				text-align: center;
+				opacity: 0.3;
+				font-family: simsun;
+				font-weight: 400;
+				text-decoration:none;
+				color:white;
+			}
+			.box .abiaoqianR{
+				position: absolute;
+				right: 0;
+				top: 50px;
+				width: 28px;
+				height: 62px;
+				background: gray;
+				z-index: 3;
+				font-size: 20px;
+				text-align: center;
+				line-height:62px ;
+				opacity: 0.3;
+				font-family: simsun;
+				font-weight: 400;
+				text-decoration:none;
+				color:white;
+			}
+			
+			/*展示框*/
+			.box{
+				margin: 100px auto;
+				
+				width: 1005px;
+				height: 164px;
+				overflow: hidden;
+				position: relative;
+
+			}
+			
+			/*长  存放图片*/
+			#bigsidel{
+				position: absolute;
+				left: 0;
+				top: 0;
+				height: 164px;
+				width: 4150px;
+				list-style: none;
+			}
+			/*图片*/
+			#todays li.fore1 a img{
+				float: left;
+				margin-right: 1px;
+			}
+			#todays li.fore2 a img{
+				float: left;
+				margin-right: 1px;
+			}#todays li.fore3 a img{
+				float: left;
+				margin-right: 1px;
+			}#todays li.fore4 a img{
+				float: left;
+				margin-right: 1px;
+			}
+		
+			
+		</style>
+		<script src="jquery-1.7.2.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$(function(){
+		var obj = new Object();
+		obj.node = $('#box_1');
+		obj.c=0;
+		side(obj);
+		
+		var objA = new Object();
+		objA.node = $('#box_2');
+		objA.c=0;
+		side(objA);
+//		状态变量
+		
+		
+		function side(obj){
+
+			
+//			为右按钮添加点击事件
+			var sta = 1;
+			$(obj.node).find('.abiaoqianR').click(function(){
+				if (sta!=1) {
+					return;
+				}
+				obj.c++;
+	//			判断c到末调整到0;
+				if (obj.c==4) {
+	//				c到3的时候,让left值到0,移到第一张图片上
+					$(obj.node).find('ul#bigsidel').css('left','0');
+	//				调到1号图片
+					obj.c=1;
+				}	
+	//			计算c相对应的left值
+				var left = obj.c*-1000;
+	//			运动状态,防止过快点击
+				sta = 2;
+	//			改动大div left值 移动
+				$(obj.node).find('#bigsidel').animate({'left':left+'px'},500,function(){
+					sta =1;
+				});
+			})
+			
+			
+			//		为左按钮加入单击事件
+			$(obj.node).find(".abiaoqianL").click(function(){
+				if (sta!=1) {
+					return;
+				}
+				obj.c--;
+	//			判断c到末调整到0;
+				if (obj.c==-1) {
+	//				c到3的时候,让left值到0,移到第一张图片上
+					$(obj.node).find('ul#bigsidel').css('left','-3015px');
+	//				调到1号图片
+					obj.c=2;
+				}	
+	//			计算c相对应的left值
+				var left = obj.c*-1000;
+	//			运动状态,防止过快点击
+				sta = 2;
+	//			改动大div left值 移动
+				$(obj.node).find('ul#bigsidel').animate({'left':left+'px'},500,function(){
+					sta =1;
+				});
+			})
+			
+			
+			
+			
+			
+			
+//			定时器
+			function move(){
+				obj.t = setInterval(function(){
+					obj.c++;
+		//			判断c到末调整到0;
+					if (obj.c==4) {
+		//				c到3的时候,让left值到0,移到第一张图片上
+						$(obj.node).find('ul#bigsidel').css('left','0');
+		//				调到1号图片
+						obj.c=1;
+					}	
+		//			计算c相对应的left值
+					var left = obj.c*-1000;
+		//			改动大div left值 移动
+					$(obj.node).find('ul#bigsidel').animate({
+						'left':left+'px'
+					});
+				},3000)
+			}
+			move();
+			
+			
+			
+
+//			移入显示隐藏   清除定时器    打开定时器
+			$(obj.node).mouseover(function(){
+				$(obj.node).find(".anniu").css('display','block');
+				clearInterval(obj.t);
+			})
+			$(obj.node).mouseout(function(){
+				$(obj.node).find(".anniu").css('display','none');
+				move();
+			})
+			
+			
+			
+			
+		}
+
+		
+//		.animate({'left':left+'px'},500})
+
+		
+
+		
+		
+	})
+</script>
+	</head>
+	<body>
+		<div id="todays">
+			<!--显示区域-->
+			<div class="box" id="box_1">
+				<!--翻页按钮-->
+				<div class="anniu">
+					<a href="javascript:"; class="abiaoqianL"><</a>
+					<a href="javascript:"; class="abiaoqianR">></a>
+				</div>
+				<!--长div，存放图片-->
+				<ul id="bigsidel">
+					
+					<li class="fore1"><a href=""><img src="images/sidel1.jpg"/></a><a href=""><img src="images/sidel2.jpg"/></a><a href=""><img src="images/sidel3.jpg"/></a><a href=""><img src="images/sidel4.jpg" style="margin-right: 0;"/></a></li>
+					<li class="fore2"><a href=""><img src="images/sidel5.jpg"/></a><a href=""><img src="images/sidel6.jpg"/></a><a href=""><img src="images/sidel7.jpg"/></a><a href=""><img src="images/sidel8.jpg" style="margin-right: 0;"/></a></li>
+					<li class="fore3"><a href=""><img src="images/sidel9.jpg"/></a><a href=""><img src="images/sidel10.jpg"/></a><a href=""><img src="images/sidel11.jpg"/></a><a href=""><img src="images/sidel12.jpg" style="margin-right: 0;"/></a></li>
+					<li class="fore4"><a href=""><img src="images/sidel1.jpg"/></a><a href=""><img src="images/sidel2.jpg"/></a><a href=""><img src="images/sidel3.jpg"/></a><a href=""><img src="images/sidel4.jpg" style="margin-right: 0;"/></a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="todays">
+			<!--显示区域-->
+			<div class="box" id="box_2">
+				<!--翻页按钮-->
+				<div class="anniu">
+					<a href="javascript:"; class="abiaoqianL"><</a>
+					<a href="javascript:"; class="abiaoqianR">></a>
+				</div>
+				<!--长div，存放图片-->
+				<ul id="bigsidel">
+					
+					<li class="fore1"><a href=""><img src="images/sidel1.jpg"/></a><a href=""><img src="images/sidel2.jpg"/></a><a href=""><img src="images/sidel3.jpg"/></a><a href=""><img src="images/sidel4.jpg" style="margin-right: 0;"/></a></li>
+					<li class="fore2"><a href=""><img src="images/sidel5.jpg"/></a><a href=""><img src="images/sidel6.jpg"/></a><a href=""><img src="images/sidel7.jpg"/></a><a href=""><img src="images/sidel8.jpg" style="margin-right: 0;"/></a></li>
+					<li class="fore3"><a href=""><img src="images/sidel9.jpg"/></a><a href=""><img src="images/sidel10.jpg"/></a><a href=""><img src="images/sidel11.jpg"/></a><a href=""><img src="images/sidel12.jpg" style="margin-right: 0;"/></a></li>
+					<li class="fore4"><a href=""><img src="images/sidel1.jpg"/></a><a href=""><img src="images/sidel2.jpg"/></a><a href=""><img src="images/sidel3.jpg"/></a><a href=""><img src="images/sidel4.jpg" style="margin-right: 0;"/></a></li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

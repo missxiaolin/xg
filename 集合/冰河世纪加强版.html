@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+<script type="text/javascript">
+//	加载
+	window.onload=function(){
+//		把图片路径存在数组里面
+		var arr = ['images/1.Png','images/2.Png','images/3.Png','images/4.Png','images/5.Png','images/6.Png','images/7.Png','images/8.Png','images/9.Png','images/10.Png','images/11.Png','images/12.Png','images/13.Png','images/14.Png','images/15.Png','images/16.Png','images/17.Png','images/18.Png','images/19.Png'];
+//		alert(arr.length);
+//		获取元素
+		var dianji = document.getElementById('dianji');
+		var img = document.getElementById('img');
+		var zt = document .getElementById('zt');
+//		创建一个变量
+		b=1;
+		var a = 0;
+		var t;
+//		点击按钮执行代码
+		dianji.onclick=function(){
+//			防止定时器叠加先清楚定时器t
+			clearInterval(t);
+//			创建一个定时器
+			t = setInterval(function(){
+				a = a + b;
+				if(a==18){
+					b=-1;
+				}
+				if (a == 0){
+					b=1;
+				}
+				img.setAttribute('src',arr[a]);
+			},100)
+		}
+		zt.onclick=function(){
+			clearInterval(t);
+		}
+	}
+</script>
+	</head>
+	<body>
+		<input type="submit" name="" value="播放" id="dianji" />
+		<input type="button" name="zt" id="zt" value="暂停" />
+		<br />
+		
+		<img src="images/1.Png" id="img"/>
+	</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+		<script type="text/javascript" src="js/DD_belatedPNG.js"></script>
+		<script type="text/javascript">
+		
+			$(document).ready(function(){
+				$('.menu li').hover(function(){
+					//显示隐藏内容
+					$(this).children('ul').show();
+					//添加一个焦点CSS为focusa
+					$(this).focus().addClass('focusa')
+					},function(){
+						$(this).children('ul').hide();
+						$(this).focus().removeClass('focusa')	   
+				});
+				//调用文件方法解决IE6对PNG不透明的情况
+				DD_belatedPNG.fix('ul,more');
+			});
+		
+		/*
+		单单显示就用toggle方法
+		$(document).ready(function(){
+				$('.menu li').hover(function(){
+					$(this).children('ul').toggle();
+					
+			});
+		
+		*/
+		
+		
+		</script>
+		<style type="text/css">
+			* { padding:0; margin:0; }
+			body { font-size:12px; background:#000; font-family:"宋体"; }
+			ul { list-style-type:none; }
+			a { color:#fff; text-decoration:none; }
+			.container { width:1024px; height:1000px; background:url(img/1.jpg) no-repeat; margin:0 auto; padding-top:100px; }
+			.menu { height:30px; line-height:30px; background:url(img/bg1.png) repeat-x; }
+			.menu li { float:left; position:relative; }
+			.menu li a:hover { color:#000; background:url(img/bg1.png);  }
+			.menu li.focusa { background:url(img/bg_focus.png); }
+			.menu li a { display:block; float:left; height:30px; line-height:30px; padding:0 20px; }
+			.menu li ul { position:absolute; left:0; background:url(img/bg2.png); width:150px; border:1px solid #000; display:none; }
+			.menu li ul a { width:110px; }
+			.one { border:1px solid #000; top:30px; }
+			.one li a:hover { background:url(img/bg1.png); }
+			.menu li ul.two { left:150px; }
+			.one li a.more { background:url(img/there.png) no-repeat 130px center; }
+			.one li a.more:hover { background:url(img/there.png) no-repeat 130px center; }
+			.menu li ul.hdw { left:150px; }
+			.menu li ul.hdwq { left:150px; }
+		</style>
+	</head>
+	<body>
+		<div class="container">
+		  <ul class="menu">
+		    <li><a href="#">菜单一</a>
+		      <ul class="one">
+		        <li><a href="#">菜单一</a></li>
+		        <li><a href="#">菜单二</a></li>
+		        <li><a href="#">菜单三</a></li>
+		        <li><a href="#">菜单四</a></li>
+		        <li><a href="#" class="more">菜单五</a>
+		          <ul class="two">
+		            <li><a href="#">菜单一</a></li>
+		            <li><a href="#">菜单二</a></li>
+		            <li><a href="#">菜单三</a></li>
+		            <li><a href="#">菜单四</a></li>
+		            <li><a href="#" class="more">菜单五</a>
+		              <ul class="hdw">
+		                <li><a href="#">菜单一</a></li>
+		                <li><a href="#">菜单二</a></li>
+		                <li><a href="#">菜单三</a></li>
+		                <li><a href="#">菜单四</a></li>
+		                <li><a href="#">菜单五</a></li>
+		              </ul>
+		            </li>
+		          </ul>
+		        </li>
+		      </ul>
+		    </li>
+		    <li><a href="#">菜单二</a></li>
+		    <li><a href="#">菜单三</a></li>
+		    <li><a href="#">菜单四</a></li>
+		    <li><a href="#">菜单五</a></li>
+		  </ul>
+		</div>
+	</body>
+</html>

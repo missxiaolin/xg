@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	
+	$('.box a').click(function(){
+		//实现一个隐藏显示的滑动效果
+		$('.one').slideToggle();
+		
+		//切换添加CLASS
+		$(this).toggleClass('active');
+
+		});
+	
+	
+		$('.box p').hover(function(){
+
+		$(this).addClass('hover');
+		},function(){
+
+		$(this).removeClass('hover');	
+
+
+		});
+	
+	
+	
+	
+	
+	
+	});
+
+
+</script>
+
+
+<style type="text/css">
+* { padding:0; margin:0;}
+
+body { font-size:12px;}
+
+
+a { text-decoration:none; color:#000; font-family:"宋体"; outline:none;}
+
+.box { width:500px; margin:0 auto;}
+
+.one { height:200px; background:#eee; display:none;}
+
+.box p { border-top:5px solid #ccc;background:url(img/1.gif) no-repeat center top;}
+
+.box p a { display:block; width:140px; height:40px; ; margin:0 auto; line-height:40px; text-align:center; font-size:14px; font-weight:bold; padding-right:10px; background:url(img/2.gif) no-repeat right -45px}
+
+
+.box p.hover { background:url(img/3.gif) no-repeat center top;}
+
+.box p a.active { background:url(img/2.gif) no-repeat right 12px;}
+
+</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="one">
+				内容
+			</div>
+			<p><a href="#">菜 单</a></p>
+		</div>
+	</body>
+</html>

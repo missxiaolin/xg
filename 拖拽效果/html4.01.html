@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/js.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#box').mousedown(function(ev){
+					//鼠标指针位置
+					var m_left=ev.pageX;
+					var m_top=ev.pageY;
+					var old_top=$(this).position().top;
+					var old_left=$(this).position().left;
+					
+					$(document).mousemove(function(ev){
+						var m_n_left=ev.pageX;
+						var m_n_top=ev.pageY;
+						var diff_x=m_n_left-m_left;
+						var diff_y=m_n_top-m_top;
+						var new_left=old_left+diff_x;
+						var new_top=old_top+diff_y;
+						if(new_left<0){
+							new_left=0;
+						}
+						if(new_top<0){
+							new_top=0;
+						}
+						if(new_top>$(document).height()-$('#box').height()){
+							new_top=$(document).height()-$('#box').height();
+						}
+						if(new_left>$(document).width()-$('#box').width()){
+							new_left=$(document).width()-$('#box').width();
+						}
+						$('#box').css({
+							left:new_left+'px',
+							top:new_top+'px'
+						})
+					})
+				})
+				$('#box').mouseup(function(){
+					$(document).off('mousemove');
+				})
+			
+			
+			})
+		
+		
+		</script>
+		<style type="text/css">
+			*{
+				margin:0px;
+				padding:0px;
+			}
+			#box{
+				background:yellow;
+				width:100px;
+				height:100px;
+				position:absolute;
+				left:100px;
+				top:100px;
+				}
+		
+		
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+</html>

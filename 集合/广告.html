@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+<style type="text/css">
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	#box{
+		width: 100px;
+		height: 100px;
+		background: red;
+		position: absolute;
+		left: 0px;
+		top: 0px;
+	}
+	#guanbi{
+		width: 20px;
+		height: 20px;
+		display: block;
+		background-color: #FFFFFF;
+		text-decoration: none;
+		line-height: 20px;
+		text-align: center;
+		font-size: 12px;
+	}
+	#guanbi:hover{
+		background-color: #000000;
+		color: #FFFFFF;
+		font-weight: bold;
+	}
+</style>
+<script type="text/javascript">
+//	加载
+	window.onload=function(){
+//		获取元素
+		var Box = document.getElementById('box');
+		var guanbi = document.getElementById('guanbi');
+//		点击关闭的时候删除广告栏
+//		方法1：隐藏广告栏
+//		guanbi.onclick=function(){
+//			Box.style.display='none';
+//		}
+//		方法2:删除广告栏
+		guanbi.onclick=function(){
+			document.body.removeChild(Box); 
+		}
+//		短路法获取浏览器对应的宽高
+		var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+		var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+//		alert(w);
+//		定义二个变量left,top
+		var left = 1;
+		var top = 1;
+//		创建一个函数
+		function move(){
+			t = setInterval(function(){
+	//			检测浏览器获是否IE取本身的left,top
+				if(document.all){
+					var old_left = Box.currentStyle.left;
+					var old_top = Box.currentStyle.top;
+				}else{
+					var old_left = getComputedStyle(Box,null).left;
+					var old_top = getComputedStyle(Box,null).top;
+				}
+//				alert(old_top);
+	//			获取本身的left,top赋值到新的变量
+				var new_left = parseInt(old_left) + left;
+				var new_top = parseInt(old_top) + top;
+	//			再把新的变量重新复制给box
+				Box.style.left = new_left + 'px';
+				Box.style.top = new_top + 'px';
+	//			w-100就是left取得最大的值如果相等就改变left的值为负数            W就是浏览器的宽度
+				if((w-100)==new_left){
+					left=-1;
+				}
+	//			h-100就是top取得最大的值如果相等就改变top的值为负数            h就是浏览器的高度
+				if((h-100)==new_top){
+					top=-1;
+				}
+	//			如果top到顶部为0重新改变top为正数
+				if(new_top==0){
+					top=1;
+				}
+	//			如果left到左边为0重新改变left为正数
+				if(new_left==0){
+					left=1;
+				}
+			},10)
+		}
+//		执行函数内的内容
+		move();
+//		移入box就清楚定时器
+		Box.onmouseover=function(){
+			clearInterval(t);
+		}
+//		移开Box就触发定时器
+		Box.onmouseout=function(){
+			move();
+		}
+	}
+</script>
+	</head>
+	<body>
+		<div id="box">
+			<a href="javascript:;" id="guanbi">X</a>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.box h1:first').addClass('current');
+				$('.box p:gt(0)').hide();
+				
+				$('.box h1').click(function(){
+					$(this).next('p').slideToggle()
+							.siblings('p').slideUp();
+					$(this).toggleClass('current')
+							.siblings('h1').removeClass('current');
+				})
+			})
+		</script>
+		<style type="text/css">
+		* { padding:0; margin:0; }
+			body { padding:100px; font:12px "宋体"; }
+			
+			.box h1{cursor:pointer;width:580px;height:31px;line-height:31px;padding-left:30px;display:block;font-size:12px;color:#fff;background:url(img/gd.jpg) no-repeat no-repeat 0 -60px;}
+			
+			.box h1:hover{background:url(img/gd.jpg) no-repeat no-repeat 0 -90px;}
+			
+			.box h1.current{background:url(img/gd.jpg) no-repeat 0 0 !important;}
+			
+			.box h1.current:hover{background:url(img/gd.jpg) no-repeat 0 -30px !important;}
+			
+			.box p{padding:10px 0px 10px 0px;}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+		  <h1>戴尔Studio XPS 8000（S210280CN）</h1>
+		  <p><img src="img/1.jpg" ></p>
+		  <h1>戴尔Inspiron 545s（S210223NCNW）</h1>
+		  <p><img src="img/2.jpg" ></p>
+		  <h1>HP 黑幻 HPE 135cn</h1>
+		  <p><img src="img/3.jpg" ></p>
+		  <h1>联想IdeaCentre K320c（锋行KING 飚速版）</h1>
+		  <p><img src="img/4.jpg" ></p>
+		  <h1>HP pavilion P6335cn </h1>
+		  <p><img src="img/5.jpg" ></p>
+		  <h1>联想IdeaCentre K310（锋行KING 至尊版）</h1>
+		  <p><img src="img/6.jpg" ></p>
+		  <h1>戴尔Vostro 成就 220s 超薄塔式（T220115CN）</h1>
+		  <p><img src="img/7.jpg" ></p>
+		  <h1>戴尔Inspiron 灵越 580s（I580D-138）</h1>
+		  <p><img src="img/8.jpg" ></p>
+		  <h1>联想启天 M6900 (启天 M6900)</h1>
+		  <p><img src="img/9.jpg" ></p>
+		  
+		</div>
+	</body>
+</html>

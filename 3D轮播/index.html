@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#flash{
+				width: 480px;
+				height: 200px;
+				margin: 40px auto;
+				perspective: 1000px;
+			}
+			#flash .in{
+				width: 480px;
+				height: 200px;
+				position: relative;
+				transform-style: preserve-3d;
+				transform-origin: 240px 50px -240px;
+				animation: run 5s linear infinite;
+				transition: all 1s;
+			}
+			@keyframes run{
+				from{
+					transform: rotateY(0deg);
+				}
+				to{
+					transform: rotateY(360deg);
+				}
+			}
+			#flash .in img{
+				position: absolute;
+			}
+			#flash .in img:nth-child(1){
+				left: 0px;
+				top: 0px;
+				transform: translateZ(-480px) rotateY(-180deg);
+			}
+			#flash .in img:nth-child(2){
+				left: -480px;
+				top: 0px;
+				transform: rotateY(-90deg);
+				transform-origin: right;
+			}
+			#flash .in img:nth-child(3){
+				right: -480px;
+				top: 0px;
+				transform: rotateY(90deg);
+				transform-origin: left;
+			}
+			#flash .in img:nth-child(4){
+				transform: translateZ(0);
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div id="flash">
+			<div class="in">
+				<img src="images/1.jpg"/>
+				<img src="images/2.jpg"/>
+				<img src="images/3.jpg"/>
+				<img src="images/4.jpg"/>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>lagou</title>
+	<link rel="stylesheet" href="./css/style.css" />
+	<script type="text/javascript" src="./js/jquery.js"></script>
+	<script type="text/javascript" src="./js/direction.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$('#box a').mouseenter(function(ev){
+			var direc = direction($(this),ev);
+			switch(direc){
+				case 'left':
+				$('.over').css({
+					left:'-113px',
+					top:'0px'
+				});
+				break;
+				case 'right':
+				$('.over').css({
+					left:'113px',
+					top:'0px'
+				});
+				break;
+				case 'top':
+				$('.over').css({
+					left:'0px',
+					top:'-113px'
+				});
+				break;
+				case 'bottom':
+				$('.over').css({
+					left:'0px',
+					top:'113px'
+				});
+				break;		
+			}
+			$(this).find('.over').stop().animate({
+				left:'0px',
+				top:'0px'
+			},500)
+		})
+		$('#box a').mouseleave(function(ev) {
+			var direc = direction($(this),ev);
+			switch(direc){
+				case 'left':
+				$(this).find('.over').stop().animate({
+					left:'-113px',
+					top:'0px'
+				});
+				break;
+				case 'top':
+				$(this).find('.over').stop().animate({
+					left:'0px',
+					top:'-113px'
+				});
+				break;
+				case 'bottom':
+				$(this).find('.over').stop().animate({
+					left:'0px',
+					top:'113px'
+				});
+				break;
+				case 'right':
+				$(this).find('.over').stop().animate({
+					left:'113px',
+					top:'0px'
+				});
+				break;
+			}
+		});
+	})
+	</script>
+</head>
+<body>
+	<div id="box">
+		<a href="javascript:;">
+			<img src="./imgs/1.jpg" alt="" width="113" height="113"/>
+			<div class="over">
+				小林
+			</div>
+		</a>
+		<a href="javascript:;">
+			<img src="./imgs/2.jpg" alt="" width="113" height="113"/>
+			<div class="over">
+				小林
+			</div>
+		</a>
+		<a href="javascript:;">
+			<img src="./imgs/3.jpg" alt="" width="113" height="113"/>
+			<div class="over">
+				小林
+			</div>
+		</a>
+		<a href="javascript:;">
+			<img src="./imgs/4.jpg" alt="" width="113" height="113"/>
+			<div class="over">
+				小林
+			</div>
+		</a>
+		<a href="javascript:;">
+			<img src="./imgs/5.jpg" alt="" width="113" height="113"/>
+			<div class="over">
+				小林
+			</div>
+		</a>
+	</div>
+</body>
+</html>

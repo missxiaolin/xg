@@ -1,0 +1,25 @@
+开启上下刷新
+appcan.ready(function() {
+			appcan.window.setBounce({
+				bounceType:[0,1],（0为向上，1为向下）
+				color:'#ccc',
+				upEndCall:function(type){
+            
+				}
+			});
+        });
+
+
+禁止上下刷新
+ appcan.ready(function() {
+			appcan.window.disableBounce();
+        });
+
+
+
+
+
+
+
+
+                    叫兽！

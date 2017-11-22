@@ -1,0 +1,58 @@
+body{
+	font-size: 12px;;
+}
+ul li{
+	list-style: none;
+}
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.box{
+	width: 450px;
+	height: 250px;
+	border: solid 1px red;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+.box .left{
+	float: left;
+	width: 40px;
+	height: 250px;
+	background-color: #EAEAE9;
+	color: #575C61;
+}
+.box .left li{
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	cursor: pointer;
+}
+.box .left li.active{
+	background-color: #3C4241;
+	color: #ffffff;
+}
+.box .right{
+	float: left;
+	margin-left: 10px;
+	width: 400px;
+	height: 250px;
+	overflow: hidden;
+}
+.box .right ul{
+	width: 400px;
+	height: 250px;
+	position: relative;
+}
+.box .right ul li{
+	width: 400px;
+	height: 250px;
+}
+
+
+
+
+
+
+

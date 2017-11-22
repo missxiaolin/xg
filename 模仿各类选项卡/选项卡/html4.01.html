@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>选项卡</title>
+		<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.ct:gt(0)').hide();
+				var options = $('.box ul li');
+				options.click(function(){
+					$(this).addClass('one')
+							.siblings().removeClass();
+							
+					var options_index = options.index(this);
+					$('.ct').eq(options_index).show()
+							.siblings().hide();
+
+				})
+			})
+		</script>
+		<style type="text/css">
+			* { padding:0; margin:0;}
+			body { font-size:12px; padding:100px;}
+			ul { list-style-type:none;}
+			.box ul li{float:left;width:80px;height:25px;line-height:25px;padding-left:24px;background:url(images/service-icon.png) no-repeat 3px 4px;cursor:pointer;}
+			.box ul .one{background:url(images/service-icon.png) no-repeat 3px -26px;}
+			.box .content{clear:both;}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul>
+				<li class="one">回报设置</li>
+				<li>奖金回报</li>
+				<li>礼品回报</li>
+			</ul>
+			
+			<div class="content">
+				<div class="ct">回报1</div>
+				<div class="ct">回报2</div>
+				<div class="ct">回报3</div>
+			</div>
+			
+			
+		</div>
+	</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				width: 450px;
+				height: 188px;
+				margin: 30px auto;
+				/*border: solid 1px #000000;*/
+				position: relative;
+			}
+			#box a{
+				position: absolute;
+				display: block;
+			}
+			#box a img{
+				width: 100%;
+				height: 100%;
+			}
+			#box .z1{
+				width: 8px;
+				height: 77px;
+				background: red;
+				left: 0px;
+				top: 30px;
+				z-index: 0;
+				opacity: 0.5;
+			}
+			#box .z2{
+				width: 77px;
+				height: 85px;
+				background: #ad9040;
+				left: 20px;
+				top: 37px;
+				z-index: 2;
+				opacity: 0.9;
+			}
+			#box .z3{
+				width: 120px;
+				height: 91px;
+				background: yellow;
+				left: 152px;
+				top: 40px;
+				z-index: 3;
+				opacity: 1;
+			}
+			#box .z4{
+				width: 77px;
+				height: 85px;
+				background: #95a0b5;
+				left: 328px;
+				top: 37px;
+				z-index: 4;
+				opacity: 0.9;
+			}
+			#box .z5{
+				width: 8px;
+				height: 77px;
+				background: #4c463e;
+				left: 443px;
+				top: 30px;
+				z-index: 5;
+				opacity: 0.5;
+			}
+			#box .z6{
+				width: 55px;
+				height: 60px;
+				background: #afa8aa;
+				left: 348px;
+				top: 24px;
+				z-index: 0;
+				opacity: 0.3;
+			}
+			#box .z7{
+				width: 61px;
+				height: 58px;
+				background: #101d31;
+				left: 178px;
+				top: 20px;
+				z-index: 0;
+				opacity: 0.3;
+			}
+			#box .z8{
+				width: 59px;
+				height: 50px;
+				background: #706c67;
+				left: 33px;
+				top: 23px;
+				z-index: 0;
+				opacity: 0.3;
+			}
+		</style>
+		<script src="jquery-1.6.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+//				取元素创建变量
+				var str = [];
+				var a = $('#box a');
+//				便利每个A标签把相应的值存入
+				a.each(function(i){
+					str[i] = {
+//						宽高left top 层级 
+						'w' : $(this).width(),
+						'h' : $(this).height(),
+						'l' : $(this).position().left,
+						't' : $(this).position().top,
+						'z' : $(this).css('z-index'),
+						'o' : $(this).css('opacity'),
+						'index' : $(this).index()
+					}
+					
+				})
+//				创建定时器
+				setInterval(function(){
+					a.each(function(i){
+						str[i].index++;
+						str[i].index = (str[i].index==8)?0:str[i].index;
+						var next = str[i].index;
+						$(this).css('z-index', str[next].z).animate({
+							'width' : str[next].w,
+							'height' : str[next].h,
+							'left' : str[next].l,
+							'top' : str[next].t,
+							'opacity': str[next].o
+						},500)
+					})
+				},2000)
+				
+			})
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<a href="javascript:;" class="z1"><img src="wall_s2.jpg"/></a>
+			<a href="javascript:;" class="z2"><img src="wall_s2.jpg"/></a>
+			<a href="javascript:;" class="z3"><img src="wall_s2.jpg"/></a>
+			<a href="javascript:;" class="z4"><img src="wall_s2.jpg"/></a>
+			<a href="javascript:;" class="z5"><img src="wall_s2.jpg"/></a>
+			<a href="javascript:;" class="z6"><img src="wall_s2.jpg"/></a>
+			<a href="javascript:;" class="z7"><img src="wall_s2.jpg"/></a>
+			<a href="javascript:;" class="z8"><img src="wall_s2.jpg"/></a>
+		</div>		
+		
+		
+		
+	</body>
+</html>

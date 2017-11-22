@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<script type="text/javascript">
+		$(function(){
+//			获取黑色区域的高度
+			var he = $("#topbar").offset().top;
+//			设置变量作为判断是否回到顶部的依据
+			var a = 1;
+			$(window).scroll(function(){
+//				获取滚动条滚动的距离
+				var top = $(this).scrollTop();
+//				document.title = top;
+//				判断黑色区域是否已经不在显示区域
+				if (a==1 && top>he) {
+//					先让黑色区域在显示区域上方
+					$("#header").css({
+						position:'fixed',
+						top:-he
+					});
+//					设置定时器让黑色区域滑动显示
+					setTimeout(function(){
+						$("#header").animate({
+							top:0
+						},300)
+					},400)
+					a = 2;
+				}
+//				判断滚动条再次回到顶部
+				if (a==2 && top==0) {
+					$("#header").css({
+						position:'relative',
+						top:0
+					});
+					a = 1;
+				}
+			})
+			
+//			轮播图
+//			设置总管变量
+			var n = 0;
+			
+//			设置定时器
+			t = setInterval(fn,3000);
+			function fn(){
+				n++;
+				n = n==4?0:n;
+				document.title = n;
+//				让第n张图片显示,其他的隐藏
+				$("#focus .fimg li").eq(n).fadeIn().siblings('li').fadeOut();
+				$("#focus ol li").find('a').css({
+					opacity:'0.3',
+					fliter:' alpha(opacity=30)',
+					cursor:'pointer'
+				});
+				$("#focus ol li a").eq(n).css({
+					opacity:'1',
+					fliter:' alpha(opacity=100)',
+					cursor:'default'
+				});
+			}
+//			给轮播区域加移入事件
+			$("#focus").mouseenter(function(){
+//				让左右两边按钮出现
+				$("#focus ul.de li a.de_left").animate({
+					left:'10px',
+					opacity:'1'
+				},300);
+				$("#focus ul.de li a.de_right").animate({
+					right:'10px',
+					opacity:'1'
+				},300);
+			})
+//			给轮播区域加移出事件
+			$("#focus").mouseleave(function(){
+//				让左右两边按钮消失
+				$("#focus ul.de li a.de_left").animate({
+					left:'-36px',
+					opacity:'0'
+				},300);
+				$("#focus ul.de li a.de_right").animate({
+					right:'-36px',
+					opacity:'0'
+				},300);
+			})
+			
+//			给左边箭头加点击事件
+			$("#focus ul.de li a.de_left").click(function(){
+//					alert()
+//					clearInterval(t);
+				n--;
+				document.title = n;
+				n= n==-1?3:n;
+				$("#focus .fimg li").eq(n).fadeIn(300).siblings('li').fadeOut(300,function(){
+					clearInterval(t);
+					t = setInterval(fn,3000);
+				});
+				$("#focus ol li").find('a').css({
+				opacity:'0.3',
+				fliter:' alpha(opacity=30)',
+				cursor:'pointer'
+				});
+				$("#focus ol li a").eq(n).css({
+					opacity:'1',
+					fliter:' alpha(opacity=100)',
+					cursor:'default'
+				});
+			})
+			
+//			给右边箭头加点击事件
+			$("#focus ul.de li a.de_right").click(function(){
+//					alert()
+//					clearInterval(t);
+				n++;
+//				document.title = n;
+				n= n==4?0:n;
+				$("#focus .fimg li").eq(n).fadeIn(300).siblings('li').fadeOut(300,function(){
+					clearInterval(t);
+					t = setInterval(fn,3000);
+				});
+				$("#focus ol li").find('a').css({
+				opacity:'0.3',
+				fliter:' alpha(opacity=30)',
+				cursor:'pointer'
+				});
+				$("#focus ol li a").eq(n).css({
+					opacity:'1',
+					fliter:' alpha(opacity=100)',
+					cursor:'default'
+				});
+			})
+//			给每个小方块加单击事件	
+			$("#focus ol li").click(function(){
+				var q = $(this).index();
+				n = q;
+				$("#focus .fimg li").eq(q).fadeIn(300).siblings('li').fadeOut(300,function(){
+					clearInterval(t);
+					t = setInterval(fn,3000);
+				});
+				$("#focus ol li").find('a').css({
+				opacity:'0.3',
+				fliter:' alpha(opacity=30)',
+				cursor:'pointer'
+				});
+				$("#focus ol li a").eq(q).css({
+					opacity:'1',
+					fliter:' alpha(opacity=100)',
+					cursor:'default'
+				});
+			})
+			
+			
+			
+		})
+		</script>
+	</head>
+	<body style="height: 5000px;">
+	<div id="h"></div>
+	<!--顶部黑色区域-->
+	<div id="header">
+		
+	</div>
+	<!--顶部黑色区域结束-->
+	<!--搜索条部分-->
+	<div id="topbar">
+		
+	</div>
+	<!--搜索条部分结束-->
+	<!--轮播图部分-->
+	<div id="focus">
+		<ul class="fimg">
+			<li style="display: block;">
+				<a href="">
+					<img src="image/focus01.jpg"/>
+				</a>
+			</li>
+			<li>
+				<a href="">
+					<img src="image/focus02.jpg"/>
+				</a>
+			</li>
+			<li>
+				<a href="">
+					<img src="image/focus03.jpg"/>
+				</a>
+			</li>
+			<li>
+				<a href="">
+					<img src="image/focus04.jpg"/>
+				</a>
+			</li>
+		</ul>
+		<ol>
+			<li>
+				<a href="javascript:void(0)" style="opacity: 1;fliter:' alpha(opacity=100)',cursor:'none'"></a>
+			</li>
+			<li>
+				<a href="javascript:void(0)"></a>
+			</li>
+			<li>
+				<a href="javascript:void(0)"></a>
+			</li>
+			<li>
+				<a href="javascript:void(0)"></a>
+			</li>
+		</ol>
+		<ul class="de">
+			<li>
+				<a href="javascript:void(0)" class="de_left"></a>
+			</li>
+			<li>
+				<a href="javascript:void(0)" class="de_right"></a>
+			</li>
+		</ul>
+	</div>
+	<!--轮播图部分结束-->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

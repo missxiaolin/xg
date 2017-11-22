@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+		<script type="text/javascript">
+		
+			$(document).ready(function(){
+			
+				//大于5隐藏且最后一条显示
+				var hdw = $('.content ul li:gt(5):not(:last)');
+				hdw.hide();
+		
+				$('.boxmore a').click(function(){
+					//如果hdw元素全部显示的时候
+					if (hdw.is(':visible')){
+						hdw.hide();
+						$('.boxmore a span').css('background','url(img/down.gif) no-repeat right 0')
+						$('ul li').removeClass('onebox');
+						}else{	
+						hdw.show();
+						$('.boxmore a span').css('background','url(img/up.gif) no-repeat right 0')
+						.text('精简资源');
+						//查询Li中的文字
+						$('ul li').filter(":contains('网页布局'),:contains('PHP视频教程'),:contains('建站知识'),:contains('高清图片下载')")
+						.addClass('onebox');
+						
+			
+					};
+					//超链接不跳转
+					return false;
+					
+		
+					});
+		
+		});
+			
+		
+		</script>
+		<style type="text/css">
+		* { padding:0; margin:0; }
+		
+		body { font-size:12px; }
+		
+		ul { list-style-type:none; }
+		
+		a { text-decoration:none; color:#666; font-family:"宋体"; outline:none; }
+		
+		a:hover { text-decoration:underline; color:red; }
+		
+		.content { width:600px; margin:40px auto 0 auto; border:1px solid #ccc; text-align:center; }
+		
+		.container { border:5px solid #eee; padding:10px; }
+		
+		.content ul { padding-left:10px; }
+		
+		.content ul li { float:left; width:170px; margin-right:15px; line-height:20px; }
+		
+		.boxmore { clear:both; padding-top:10px; }
+		
+		.boxmore a { display:block; width:120px; line-height:24px; border:1px solid #aaa; margin:0 auto; }
+		
+		.boxmore a span { padding-right:15px; background:url(img/down.gif) no-repeat right 0; }
+		
+		.onebox a { color:red; font-weight:bold; }
+		</style>
+	</head>
+	<body>
+		<div class="content">
+		  <div class="container">
+		    <ul>
+		      <li ><a href="#">XHTML网页基础教程</a><span>(30440) </span></li>
+		      <li ><a href="#">DEDE织梦CMS教程</a><span>(27220) </span></li>
+		      <li ><a href="#">网页布局</a><span>(20808) </span></li>
+		      <li ><a href="#">Mysql数据库视频教程</a><span>(17821) </span></li>
+		      <li ><a href="#">DreamWeaverCS5</a><span>(12289) </span></li>
+		      <li ><a href="#">PhotoShop视频教程</a><span>(8242) </span></li>
+		      <li ><a href="#">PHP视频教程</a><span>(14894) </span></li>
+		      <li ><a href="#">After Effects视频教程</a><span>(9520) </span></li>
+		      <li ><a href="#">建站知识</a><span>(2195) </span></li>
+		      <li ><a href="#">DIV+CSS</a><span>(4114) </span></li>
+		      <li ><a href="#">高清图片下载</a><span>(12205) </span></li>
+		      <li ><a href="#">网页模版下载</a><span>(1466) </span></li>
+		      <li ><a href="#">图标资源下载</a><span>(3091) </span></li>
+		      <li ><a href="#">其它资源</a><span>(7275) </span></li>
+		    </ul>
+		    <div class="boxmore"> <a href="1.html"><span>显示全部资源</span></a> </div>
+		  </div>
+		</div>
+	</body>
+</html>

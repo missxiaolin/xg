@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			.hd{
+				width: 300px;
+				height: 400px;
+				position: relative;
+				margin: 20px auto;
+				/*景深*/
+				perspective: 1000px;
+			}
+			.hd img{
+				transform-style: preserve-3d;
+				width: 300px;
+				height: 400px;
+				position: absolute;
+				left: 0;
+				margin: 0;
+				transition: all 1s;
+				/*如果背对显示器,就隐藏*/
+				backface-visibility: hidden;
+				transform: rotateY(-180deg);
+			}
+			.hd p{
+				transform-style: preserve-3d;
+				width: 300px;
+				height: 400px;
+				position: absolute;
+				left: 0;
+				margin: 0;
+				background: yellow;
+				color: #FFFFFF;
+				transition: all 1s;
+				/*如果背对显示器,就隐藏*/
+				backface-visibility: hidden;
+			}
+			.hd:hover p{
+				transform: rotateY(180deg);
+			}
+			.hd:hover img{
+				transform: rotateY(0deg);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="hd">
+			<img src="images/1.jpg" alt="" />
+			<p>翻开有惊喜</p>
+		</div>
+	</body>
+</html>
