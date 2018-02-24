@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		#box{
+			width: 100vw;
+			height: 100vh;
+			overflow: hidden;
+		}
+		#scores{
+			width: 20vw;
+			height: 3vh;
+			background: wheat;
+			position: absolute;
+			left: 50vw;
+			top: 0vh;
+			color: black;
+			margin-left: -10vw;
+			line-height: 3vh;
+			border-radius: 2vh;
+			opacity: 0.8;
+			font-weight: 700;
+			font-size: 5vw;
+			text-align: center;
+			/*display: none;*/
+		}
+		.up{
+			width: 100vw;
+			height: 100vh;
+			background: rgba(100,100,100,0.5);
+			position: absolute;
+		}
+		.up #start{
+			width: 40vw;
+			height: 15vw;
+			background: #5bc648;
+			position: absolute;
+			left: 30vw;
+			top: 40vh;
+			border: none;
+			/*border-radius: 5vw;*/
+			font-size: 5vw;
+			color: white;
+			font-weight: 700;
+		}
+		.up #restart{
+			width: 40vw;
+			height: 15vw;
+			background: #993300;
+			position: absolute;
+			left: 30vw;
+			top: 40vh;
+			border: none;
+			/*border-radius: 5vw;*/
+			font-size: 5vw;
+			color: white;
+			font-weight: 700;
+		}
+		.down{
+			display: none;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var brid = new Brid();
+			brid.draw();
+			var start = document.getElementById('start');
+			var restart = document.getElementById('restart');
+			var up =document.getElementsByClassName('up');
+			var down =document.getElementsByClassName('down');
+			start.addEventListener('touchstart',function(){
+				up[0].style.display='none';
+				brid.run();
+			})
+			restart.addEventListener('touchstart',function(){
+				down[0].style.display='none';
+				brid = new Brid();
+				brid.draw();
+				brid.run();
+			})
+		}
+	</script>
+	<body>
+		<div class="up">
+			<button id='start'>开始</button>
+		</div>
+		<div class="up down">
+			<button id='restart'>重新开始</button>
+		</div>
+		<div id="box">
+			<canvas id="cav"></canvas>
+			<div id="scores">分数：0</div>
+			<audio src="images/fly.ogg" id='fly'></audio>
+			<audio src="images/hit.ogg" id='hit'></audio>
+			<audio src="images/score.ogg" id="scoremusic"></audio>
+		</div>
+	</body>
+</html>
