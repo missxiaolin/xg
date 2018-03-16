@@ -1,0 +1,68 @@
+<html>
+
+<head>
+    <title>QRCODE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <style type="text/css">
+    </style>
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/grid.js"></script>
+    <script type="text/javascript" src="js/version.js"></script>
+    <script type="text/javascript" src="js/detector.js"></script>
+    <script type="text/javascript" src="js/formatinf.js"></script>
+    <script type="text/javascript" src="js/errorlevel.js"></script>
+    <script type="text/javascript" src="js/bitmat.js"></script>
+    <script type="text/javascript" src="js/datablock.js"></script>
+    <script type="text/javascript" src="js/bmparser.js"></script>
+    <script type="text/javascript" src="js/datamask.js"></script>
+    <script type="text/javascript" src="js/rsdecoder.js"></script>
+    <script type="text/javascript" src="js/gf256poly.js"></script>
+    <script type="text/javascript" src="js/gf256.js"></script>
+    <script type="text/javascript" src="js/decoder.js"></script>
+    <script type="text/javascript" src="js/qrcode.js"></script>
+    <script type="text/javascript" src="js/findpat.js"></script>
+    <script type="text/javascript" src="js/alignpat.js"></script>
+    <script type="text/javascript" src="js/databr.js"></script>
+
+</head>
+
+<body>
+    <form id="uploadFrom" style="display: none">
+        <input type="file" name="file" id="code_in" />
+    </form>
+    <button onclick="captureToCanvas()">Capture</button>
+
+    <script type="text/javascript">
+        
+
+
+        function read(a) {
+            alert(a);
+        }
+
+        function load(image) {
+            qrcode.callback = read;
+            qrcode.decode(image);
+        }
+        // load()
+
+        function captureToCanvas() {
+            $("#code_in").click();
+        }
+
+        $("#code_in").change(function (e) {
+            var reader = new FileReader();
+            reader.readAsDataURL(e.currentTarget.files[0]);
+            reader.onload = function (e) {
+                // console.log(e.target.result)
+                var codeImg = e.target.result
+                alert(codeImg)
+                load(codeImg)
+            }
+        });
+    </script>
+</body>
+
+</html>
